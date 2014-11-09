@@ -24,7 +24,6 @@
         console.log('BoardCtrl')
         $scope.leds= TesselLed.query()
         $scope.isLedEnabled= function (ledIndex) {
-            //console.log()
             return $scope.leds.length && $scope.leds[ledIndex] && $scope.leds[ledIndex].$value
         }
     }
