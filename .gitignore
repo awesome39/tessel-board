@@ -1,0 +1,5 @@
+~*
+node_modules/*
+npm-debug.log
+/browser/release/bower_components
+/browser/node_modules
