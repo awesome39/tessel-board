@@ -1,0 +1,18 @@
+{
+  "name": "tessel-board", "version": "0.0.1",
+
+  "main": "index.js",
+
+  "scripts": {
+    "start": "tessel run index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "dependencies": {
+    "connect": "latest"
+  },
+
+  "devDependencies": {},
+
+  "license": "GPL"
+}
