@@ -1,5 +1,5 @@
 {
-    "name": "tessel-board", "version": "0.0.1",
+    "name": "tessel-board", "version": "0.0.3",
 
     "dependencies": {
         "angular": "latest",

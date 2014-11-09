@@ -1,5 +1,5 @@
 {
-  "name": "tessel-board", "version": "0.0.1",
+  "name": "tessel-board", "version": "0.0.3",
 
   "main": "index.js",
 
@@ -13,7 +13,9 @@
     "connect": "latest"
   },
 
-  "devDependencies": {},
+  "devDependencies": {
+    "connect-static": "latest"
+  },
 
   "license": "GPL"
 }
