@@ -1,5 +1,6 @@
 # Tessel-board API
 
+![Tessel](https://s3.amazonaws.com/technicalmachine-assets/branding/tessel-logo.svg)
 
 
  
