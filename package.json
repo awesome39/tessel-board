@@ -4,6 +4,7 @@
   "main": "index.js",
 
   "scripts": {
+    "start": "npm install && bower install",
     "start": "tessel run index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
