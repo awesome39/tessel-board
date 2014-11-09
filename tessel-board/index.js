@@ -3,8 +3,8 @@ var connect= require('connect')
 
 
 
-var debug= void 'production'
-//var debug= console
+//var debug= void 'production'
+var debug= console
 
 var app= module.exports= connect()
 
@@ -58,6 +58,17 @@ app.use('/api/led', function (req, res) {
     } else {
         res.statusCode= 400 // Bad Request
     }
+    res.end()
+})
+
+app.use('/api/leds', function (req, res) {
+    if (debug) debug.log('GET /api/leds', req.query)
+    $response.writeJson(res, [
+        $led.getLed(0),
+        $led.getLed(1),
+        $led.getLed(2),
+        $led.getLed(3),
+    ], 200) // Ok
     res.end()
 })
 
