@@ -9,12 +9,6 @@
             $routeProvider
                 .when('/', { name: 'Board',
                     template: '',
-                    controller: 'BoardCtrl',
-                    resolve: {
-                        leds: function (TesselLed) {
-                            return TesselLed.query().$promise
-                        }
-                    }
                 })
 
             ;
@@ -26,8 +20,13 @@
 
     ;
 
-    function BoardCtrl($scope, leds) {
-        console.log('BoardCtrl', leds)
+    function BoardCtrl($scope, TesselLed) {
+        console.log('BoardCtrl')
+        $scope.leds= TesselLed.query()
+        $scope.isLedEnabled= function (ledIndex) {
+            //console.log()
+            return $scope.leds.length && $scope.leds[ledIndex] && $scope.leds[ledIndex].$value
+        }
     }
 
     function TesselLedResource($resource) {
@@ -38,4 +37,127 @@
 
 <div ng-app="tessel-board">
     <div ng-view></div>
+    <div class="tessel-scheme" ng-controller="BoardCtrl">
+        <div class="tessel-scheme__port tessel-scheme__port_a">
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+        </div>
+        <div class="tessel-scheme__port tessel-scheme__port_b">
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+        </div>
+        <div class="tessel-scheme__port tessel-scheme__port_c">
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+        </div>
+        <div class="tessel-scheme__port tessel-scheme__port_d">
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+            <div class="tessel-scheme__port__pin"> <div class="tessel-scheme__pin"></div> </div>
+        </div>
+        <div class="tessel-scheme__port tessel-scheme__port_gpio"></div>
+        <div class="tessel-scheme__leds">
+            <div class="tessel-scheme__leds__led tessel-scheme__leds__led_btn"> <div class="tessel-scheme__led tessel-scheme__led_btn"></div> </div>
+            <div class="tessel-scheme__leds__led"> <div class="tessel-scheme__led" ng-class="{_enabled:isLedEnabled(2)}"></div> </div>
+            <div class="tessel-scheme__leds__led"> <div class="tessel-scheme__led" ng-class="{_enabled:isLedEnabled(3)}"></div> </div>
+            <div class="tessel-scheme__leds__led"> <div class="tessel-scheme__led" ng-class="{_enabled:isLedEnabled(0)}"></div> </div>
+            <div class="tessel-scheme__leds__led"> <div class="tessel-scheme__led" ng-class="{_enabled:isLedEnabled(1)}"></div> </div>
+
+        </div>
+    </div>
 </div>
+
+<style>
+    .tessel-scheme {
+        position: absolute; top: 13%; right: 37%; bottom: 13%; left: 37%;
+        border: 1px solid #ccc;
+    }
+        .tessel-scheme__port {
+            position: absolute;
+            background: #e2e2e2;
+            border: 1px solid #bbb;
+        }
+        .tessel-scheme__port_a {
+            top: 5%; left: -12%;
+            width: 15%; height: 42%;
+        }
+        .tessel-scheme__port_b {
+            bottom: 5%; left: -12%;
+            width: 15%; height: 42%;
+        }
+        .tessel-scheme__port_c {
+            top: 5%; right: -12%;
+            width: 15%; height: 42%;
+        }
+        .tessel-scheme__port_d {
+            bottom: 5%; right: -12%;
+            width: 15%; height: 42%;
+        }
+            .tessel-scheme__port__pin {
+                position: relative;
+                height: 10%;
+            }
+
+        .tessel-scheme__pin {
+            position: absolute; top: 2px; right: 2px; bottom: 2px; left: 2px;
+            background: #f2f2f2;
+        }
+
+        .tessel-scheme__leds {
+            position: absolute; top: 10%; right: 12%; bottom: 40%;
+            width: 15%;
+            background: #e2e2e2;
+            border: 1px solid #bbb;
+        }
+            .tessel-scheme__leds__led {
+                position: relative;
+                width: 100%; height: 18.75%;
+            }
+            .tessel-scheme__leds__led_btn {
+                height: 25%;
+            }
+
+        .tessel-scheme__led {
+            position: absolute; top: 2px; right: 2px; bottom: 2px; left: 2px;
+            background: #fff;
+        }
+        .tessel-scheme__led_btn {
+            background: #aaa;
+        }
+
+        .tessel-scheme__led._enabled {
+            background: #333;
+        }
+
+</style>
