@@ -6,7 +6,7 @@ function LedService(tessel) {
 
 LedService.prototype.getLed= function (ledIndex) {
     var led
-    if (ledIndex) {
+    if (ledIndex !== undefined && ledIndex !== null) {
         led= this.tessel.led[ledIndex]
         if (led) {
             led.$value= led.rawRead()
