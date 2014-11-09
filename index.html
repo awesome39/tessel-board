@@ -1,0 +1,20 @@
+<script src="browser/release/bower_components/angular/angular.min.js"></script>
+<script src="browser/release/bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="browser/release/bower_components/angular-route/angular-route.min.js"></script>
+
+<script>
+    angular.module('tessel-board', ['ngResource','ngRoute'])
+
+        .controller('BoardCtrl', BoardCtrl)
+
+    ;
+
+    function BoardCtrl($scope) {
+        console.log('BoardCtrl')
+    }
+
+</script>
+
+<div ng-app="tessel-board", ng-controller="BoardCtrl">
+
+</div>

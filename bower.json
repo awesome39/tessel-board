@@ -1,0 +1,11 @@
+{
+    "name": "tessel-board", "version": "0.0.1",
+
+    "dependencies": {
+        "angular": "latest",
+        "angular-resource": "latest",
+        "angular-route": "latest"
+    },
+
+    "license": "GPL"
+}
