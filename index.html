@@ -5,16 +5,37 @@
 <script>
     angular.module('tessel-board', ['ngResource','ngRoute'])
 
+        .config(function ($routeProvider) {
+            $routeProvider
+                .when('/', { name: 'Board',
+                    template: '',
+                    controller: 'BoardCtrl',
+                    resolve: {
+                        leds: function (TesselLed) {
+                            return TesselLed.query().$promise
+                        }
+                    }
+                })
+
+            ;
+        })
+
         .controller('BoardCtrl', BoardCtrl)
+
+        .factory('TesselLed', TesselLedResource)
 
     ;
 
-    function BoardCtrl($scope) {
-        console.log('BoardCtrl')
+    function BoardCtrl($scope, leds) {
+        console.log('BoardCtrl', leds)
+    }
+
+    function TesselLedResource($resource) {
+        return $resource('http://192.168.1.139:1337/api/leds', {})
     }
 
 </script>
 
-<div ng-app="tessel-board", ng-controller="BoardCtrl">
-
+<div ng-app="tessel-board">
+    <div ng-view></div>
 </div>
